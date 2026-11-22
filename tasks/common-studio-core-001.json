@@ -1,0 +1,42 @@
+{
+  "id": "common-studio-core-001",
+  "title": "Core model, hashable score IR and recording-id grammar",
+  "project": "common-studio",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": [
+    "music",
+    "open-culture",
+    "public-domain",
+    "software"
+  ],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "medium",
+  "status": "open",
+  "context": "Common Studio is an open, public-domain music production studio in software, written new in Python with permissive dependencies and released under the Unlicense. This task is part of its first milestones: the licence-clean spine that every later gate depends on. The owner's private reference pipeline may be consulted for ideas only; no text, configuration value, arrangement source, skill or asset from it may be copied, and every name, format and value is authored new.",
+  "objective": "Implement the core model (Work, Arrangement identified as work--style, Part with notes on a beat grid plus lyrics, section count, voice and kit), a canonical deterministic hashable JSON score representation with round-trip conversion, and the recording-id grammar work--style[@venue][+treatment], as Python under src/ with pytest tests.",
+  "acceptanceCriteria": [
+    "AC-01: Work, Arrangement, Part (notes as beat, pitch, duration, velocity, with optional lyrics, a section count, a voice and a kit) and the beat grid exist, and the recording ids work--style, work--style@venue, work--style+treatment and work--style@venue+treatment each parse and format, with unit tests passing in CI.",
+    "AC-02: toIR and fromIR round-trip on fixtures, the representation has deterministic key and note ordering, a one-note change changes the hash and an identical arrangement does not, with round-trip and hash tests passing in CI.",
+    "Nothing is copied from the private reference pipeline; every name, format and value is authored new.",
+    "Tests pass; the commit is DCO signed-off."
+  ],
+  "output": "A pull request adding the core model, the score representation with hashing and round-trip tests, and the recording-id grammar under src/.",
+  "verifiedNeed": false,
+  "provenance": "generated",
+  "inputs": "none",
+  "outputLicense": "Unlicense",
+  "lifecycle": "ai-full",
+  "reviewPolicy": {
+    "vendors": 2,
+    "evaluators": [],
+    "humanCheckpoints": [
+      "spec",
+      "plan",
+      "ship"
+    ]
+  }
+}

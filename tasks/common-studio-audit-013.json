@@ -1,0 +1,41 @@
+{
+  "id": "common-studio-audit-013",
+  "title": "Licence audit script that fails on a copyleft dependency",
+  "project": "common-studio",
+  "type": "code",
+  "lane": "donated",
+  "priority": "high",
+  "domain": [
+    "music",
+    "open-culture",
+    "public-domain",
+    "software"
+  ],
+  "riskTier": "low",
+  "urgent": false,
+  "deliverable": "pr",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "Common Studio is an open, public-domain music production studio in software, written new in Python with permissive dependencies and released under the Unlicense. This task is part of its first milestones: the licence-clean spine that every later gate depends on. The owner's private reference pipeline may be consulted for ideas only; no text, configuration value, arrangement source, skill or asset from it may be copied, and every name, format and value is authored new.",
+  "objective": "Write a licence audit script under scripts/ that reads the project's installed dependency tree and fails when any package carries a copyleft licence, and wire it into CI.",
+  "acceptanceCriteria": [
+    "AC-10: The audit script lists every dependency's licence, exits non-zero when one is copyleft (GPL, LGPL, AGPL and similar) and zero otherwise, and a test using a copyleft fixture makes it fail.",
+    "AC-10: The script runs in CI, and a CI run passes on the project's own tree.",
+    "Tests pass; the commit is DCO signed-off."
+  ],
+  "output": "A pull request adding the licence audit script under scripts/, its copyleft fixture and test, and the CI step.",
+  "verifiedNeed": false,
+  "provenance": "generated",
+  "inputs": "none",
+  "outputLicense": "Unlicense",
+  "lifecycle": "ai-full",
+  "reviewPolicy": {
+    "vendors": 2,
+    "evaluators": [],
+    "humanCheckpoints": [
+      "spec",
+      "plan",
+      "ship"
+    ]
+  }
+}

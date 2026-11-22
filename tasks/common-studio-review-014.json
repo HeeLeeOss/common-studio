@@ -1,0 +1,41 @@
+{
+  "id": "common-studio-review-014",
+  "title": "Clean-room review record for milestone M1",
+  "project": "common-studio",
+  "type": "writing",
+  "lane": "donated",
+  "priority": "high",
+  "domain": [
+    "music",
+    "open-culture",
+    "public-domain",
+    "software"
+  ],
+  "riskTier": "medium",
+  "urgent": false,
+  "deliverable": "document",
+  "tokenEstimate": "small",
+  "status": "open",
+  "context": "Common Studio is an open, public-domain music production studio in software, written new in Python with permissive dependencies and released under the Unlicense. This task is part of its first milestones: the licence-clean spine that every later gate depends on. The owner's private reference pipeline may be consulted for ideas only; no text, configuration value, arrangement source, skill or asset from it may be copied, and every name, format and value is authored new.",
+  "objective": "Record the clean-room reviewer's review of milestone M1's deliverables in policy/clean-room-review-M1.md. A named person who has not read the private reference pipeline reads the delivered text, values and fixtures and states whether they were authored new; an agent may prepare the checklist and the file list but may not make the statement.",
+  "acceptanceCriteria": [
+    "AC-11: The record names the reviewer, the date and the commit reviewed, lists the files read, and states whether the text, values and fixtures were authored new and do not reproduce the private reference.",
+    "AC-11: The record is signed off by the named clean-room reviewer and not by an agent, and states that the reviewer has not read the private reference.",
+    "The record is released under CC0-1.0 and contains no text copied from the private reference."
+  ],
+  "output": "policy/clean-room-review-M1.md",
+  "verifiedNeed": false,
+  "provenance": "generated",
+  "inputs": "none",
+  "outputLicense": "CC0-1.0",
+  "lifecycle": "ai-full",
+  "reviewPolicy": {
+    "vendors": 2,
+    "evaluators": [],
+    "humanCheckpoints": [
+      "spec",
+      "plan",
+      "ship"
+    ]
+  }
+}
