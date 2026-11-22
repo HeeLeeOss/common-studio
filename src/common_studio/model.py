@@ -159,6 +159,13 @@ class Waiver:
     def to_dict(self) -> dict:
         return {"check": self.check, "reason": self.reason, "bars": list(self.bars), "by": self.by}
 
+    @classmethod
+    def from_dict(cls, d: dict) -> "Waiver":
+        """Rebuild a waiver from its record; the constructor re-validates the reason and bars."""
+        if not isinstance(d, dict):
+            raise ValueError("a waiver record is an object")
+        return cls(d.get("check"), d.get("reason"), tuple(d.get("bars") or ()), d.get("by"))
+
 
 @dataclass(frozen=True)
 class Arrangement:

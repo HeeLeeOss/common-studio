@@ -15,6 +15,8 @@ from typing import Callable, Optional
 from .model import Arrangement, Note, Part, Waiver
 
 STAGE = "pre-render-check"
+RESULT_SCHEMA = "common-studio/check-result/1"
+WAIVER_SCHEMA = "common-studio/waivers/1"
 BLOCK = "block"
 WARN = "warn"
 
@@ -79,7 +81,11 @@ class StageResult:
         return self.verdict == "blocked"
 
     def to_dict(self) -> dict:
-        return {"stage": self.stage, "arrangement": self.arrangement, "verdict": self.verdict,
+        counts = {"block": 0, "warn": 0, "waived": 0}
+        for f in self.findings:
+            counts["waived" if f.waived else f.severity] += 1
+        return {"schema": RESULT_SCHEMA, "stage": self.stage, "arrangement": self.arrangement,
+                "verdict": self.verdict, "counts": counts,
                 "checks": [{"check": c.check, "severity": c.severity, "passed": c.passed} for c in self.checks],
                 "findings": [f.to_dict() for f in self.findings],
                 "waivers": [w.to_dict() for w in self.waivers]}
@@ -223,6 +229,24 @@ def waive(arr: Arrangement, check: str, reason: str, bars: tuple[int, ...] = (),
     if check != "harmony-clash":
         raise ValueError(f"only a blocking check can be waived, not {check!r}")
     return replace(arr, waivers=arr.waivers + (Waiver(check, reason, tuple(bars), by),))
+
+
+def waivers_to_json(arr: Arrangement) -> str:
+    """The waiver record of an arrangement as stable JSON, to be stored beside the arrangement."""
+    return json.dumps({"schema": WAIVER_SCHEMA, "arrangement": arr.id,
+                       "waivers": [w.to_dict() for w in arr.waivers]}, sort_keys=True, separators=(",", ":"))
+
+
+def with_recorded_waivers(arr: Arrangement, text: str) -> Arrangement:
+    """Attach a stored waiver record to its arrangement. Refuses a record for another arrangement or a
+    waiver without a written reason, so a hand-edited record cannot slip past a blocker."""
+    d = json.loads(text)
+    if d.get("schema") != WAIVER_SCHEMA or d.get("arrangement") != arr.id:
+        raise ValueError("waiver record does not belong to this arrangement")
+    ws = tuple(Waiver.from_dict(w) for w in d.get("waivers", ()))
+    if any(w.check != "harmony-clash" for w in ws):
+        raise ValueError("only a blocking check can be waived")
+    return replace(arr, waivers=ws)
 
 
 def run_stage(arr: Arrangement) -> StageResult:

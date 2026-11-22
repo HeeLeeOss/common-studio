@@ -12,6 +12,8 @@ __all__ = [
 
 from .checks import (  # noqa: E402
     BlockedError, CheckResult, Finding, StageResult, require_clear, run_stage, waive,
+    waivers_to_json, with_recorded_waivers,
 )
 
-__all__ += ["BlockedError", "CheckResult", "Finding", "StageResult", "require_clear", "run_stage", "waive"]
+__all__ += ["BlockedError", "CheckResult", "Finding", "StageResult", "require_clear", "run_stage", "waive",
+            "waivers_to_json", "with_recorded_waivers"]

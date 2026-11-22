@@ -120,3 +120,30 @@ def test_result_format_machine_readable():
 def test_warnings_do_not_block():
     r = require_clear(fx.parallel_fifths())
     assert r.verdict == "warn"
+
+
+def test_result_carries_schema_and_counts():
+    d = run_stage(waive(fx.clash(), "harmony-clash", "Deliberate bitonal bite in bar 2")).to_dict()
+    assert d["schema"] == "common-studio/check-result/1"
+    assert d["counts"]["waived"] == 1 and d["counts"]["block"] == 0
+    assert run_stage(fx.clash()).to_dict()["counts"]["block"] == 1
+
+
+def test_waiver_record_round_trips_and_passes_blocker():
+    from common_studio import waivers_to_json, with_recorded_waivers
+    waived = waive(fx.clash(), "harmony-clash", "Deliberate bitonal bite in bar 2", bars=(2,), by="reviewer")
+    restored = with_recorded_waivers(fx.clash(), waivers_to_json(waived))
+    assert restored.waivers == waived.waivers
+    assert run_stage(restored).verdict == "waived"
+
+
+def test_waiver_record_refuses_tampering():
+    from common_studio import waivers_to_json, with_recorded_waivers
+    rec = json.loads(waivers_to_json(waive(fx.clash(), "harmony-clash", "Deliberate bitonal bite in bar 2")))
+    other = json.dumps({**rec, "arrangement": "someone--else"})
+    with pytest.raises(ValueError):
+        with_recorded_waivers(fx.clash(), other)
+    rec["waivers"][0]["reason"] = ""
+    with pytest.raises(ValueError):
+        with_recorded_waivers(fx.clash(), json.dumps(rec))
+    assert run_stage(fx.clash()).blocked
