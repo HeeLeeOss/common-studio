@@ -1,0 +1,31 @@
+# Common Studio
+
+An open, public-domain music production studio in software. This package holds the core model: works,
+arrangements, parts on a beat grid, a canonical hashable score representation, and the recording-id grammar.
+Code is released under the Unlicense; see `LICENSE`.
+
+```
+pip install -e ".[dev]"
+pytest
+```
+
+## Core model
+
+- `Work` — a composition (`id`, `title`).
+- `Arrangement` — one arrangement of a work in a style, identified as `work--style`. It holds `Part`s.
+- `Part` — notes on a beat grid (`beat`, `pitch`, `duration`, `velocity`), optional lyrics, a section count, a
+  voice and a kit. Beats and durations are exact fractions of a beat, so nothing depends on floating point.
+- An arrangement is built by a generator: any callable matching `ArrangementGenerator` that takes a `Work` and returns
+  an `Arrangement`.
+
+## Score representation
+
+`to_ir(arrangement)` returns a plain dictionary in a canonical form: parts sorted by name, notes sorted by
+`(beat, pitch, duration, velocity)`, beats and durations written as exact fractions in lowest terms. `canonical_json`
+writes it with sorted keys and fixed separators, and `ir_hash` is the SHA-256 of that text. `from_ir` reads it back.
+`toIR` and `fromIR` are aliases.
+
+## Recording ids
+
+`work--style[@venue][+treatment]`, where each part is lowercase letters and digits with single hyphens between
+groups. `parse_recording_id` and `format_recording_id` are inverses.
