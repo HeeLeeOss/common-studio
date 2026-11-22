@@ -29,12 +29,3 @@ writes it with sorted keys and fixed separators, and `ir_hash` is the SHA-256 of
 
 `work--style[@venue][+treatment]`, where each part is lowercase letters and digits with single hyphens between
 groups. `parse_recording_id` and `format_recording_id` are inverses.
-
-## Pre-render checks
-
-`run_stage(arrangement)` runs four checks and returns a `StageResult` (`to_dict()` / `to_json()`: stage name, verdict,
-findings with `bar` and `kind`). `harmony-clash` blocks; `voice-leading` (parallel fifths and octaves),
-`instrument-range` and `voicing` warn. The verdict is `blocked`, `waived`, `warn` or `pass`. The only way past a
-blocker is `waive(arrangement, "harmony-clash", reason, bars=())`, which needs a written reason and records a `Waiver`
-on the arrangement (not part of the score hash). `require_clear` raises `BlockedError` for an unwaived blocker.
-Authored fixtures for every check are in `common_studio.check_fixtures`.
