@@ -15,7 +15,7 @@
   "urgent": false,
   "deliverable": "pr",
   "tokenEstimate": "medium",
-  "status": "open",
+  "status": "delivered",
   "context": "Common Studio is an open, public-domain music production studio in software, written new in Python with permissive dependencies and released under the Unlicense. This task is part of its first milestones: the licence-clean spine that every later gate depends on. The owner's private reference pipeline may be consulted for ideas only; no text, configuration value, arrangement source, skill or asset from it may be copied, and every name, format and value is authored new.",
   "objective": "Implement the core model (Work, Arrangement identified as work--style, Part with notes on a beat grid plus lyrics, section count, voice and kit), a canonical deterministic hashable JSON score representation with round-trip conversion, and the recording-id grammar work--style[@venue][+treatment], as Python under src/ with pytest tests.",
   "acceptanceCriteria": [

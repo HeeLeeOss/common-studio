@@ -15,7 +15,7 @@
   "urgent": false,
   "deliverable": "document",
   "tokenEstimate": "small",
-  "status": "open",
+  "status": "delivered",
   "context": "Common Studio is an open, public-domain music production studio in software, written new in Python with permissive dependencies and released under the Unlicense. This task is part of its first milestones: the licence-clean spine that every later gate depends on. The owner's private reference pipeline may be consulted for ideas only; no text, configuration value, arrangement source, skill or asset from it may be copied, and every name, format and value is authored new.",
   "objective": "Record the clean-room reviewer's review of milestone M1's deliverables in policy/clean-room-review-M1.md. A named person who has access to the private reference pipeline compares the delivered text, values and fixtures with it and states whether they were authored new and do not reproduce it; an agent may prepare the checklist and the file list but may not make the statement.",
   "acceptanceCriteria": [

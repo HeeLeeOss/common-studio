@@ -15,7 +15,7 @@
   "urgent": false,
   "deliverable": "document",
   "tokenEstimate": "small",
-  "status": "open",
+  "status": "delivered",
   "context": "Common Studio is an open, public-domain music production studio in software, written new in Python with permissive dependencies and released under the Unlicense. This task is part of its first milestones: the licence-clean spine that every later gate depends on. The owner's private reference pipeline may be consulted for ideas only; no text, configuration value, arrangement source, skill or asset from it may be copied, and every name, format and value is authored new.",
   "objective": "Write the sourcing policy and the asset licence policy as a single plain Markdown document, policy/sourcing-and-asset-licence-policy.md, that the ingest gate and the asset manifests enforce.",
   "acceptanceCriteria": [
