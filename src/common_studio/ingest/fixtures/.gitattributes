@@ -1,0 +1,2 @@
+# Fixture bytes are hashed in work.yaml: never convert their line endings.
+* -text

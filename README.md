@@ -38,3 +38,25 @@ findings with `bar` and `kind`). `harmony-clash` blocks; `voice-leading` (parall
 blocker is `waive(arrangement, "harmony-clash", reason, bars=())`, which needs a written reason and records a `Waiver`
 on the arrangement (not part of the score hash). `require_clear` raises `BlockedError` for an unwaived blocker.
 Authored fixtures for every check are in `common_studio.check_fixtures`.
+
+## Ingest and the licence-evidence gate
+
+`common_studio.ingest` reads ABC (`parse_abc`), uncompressed partwise MusicXML (`parse_musicxml`), Standard MIDI
+Files of format 0 or 1 (`parse_midi`) and a documented subset of LilyPond (`parse_lilypond`) into `Work`,
+`Arrangement` and `Part` on a `BeatGrid`. A beat is the unit of the time signature's lower number. A parser fails only
+with `ParseError`; each one is fuzz-tested.
+
+`ingest(data, fmt, evidence, out_dir=..., origin=...)` (or `ingest_file(path, evidence, out_dir=...)`) enforces the
+sourcing policy in `policy/sourcing-and-asset-licence-policy.md`:
+
+- `composition`, `edition` and `lyrics` each need `source`, `basis`, `checked_at` and `checker`; `lyrics` may say
+  `value: none` and still needs the four fields. Otherwise `EvidenceRefused` names every missing or incomplete record.
+- A banned source (`SourceRefused`) is refused even when the tune is in the public domain. A verify-only or
+  unregistered source is written with `gate.status: flagged` until a maintainer who is not one of the checkers
+  confirms it (`confirmed_by=`). Sources are classified by `SourceRegistry`; maintainers add entries with
+  `DEFAULT_REGISTRY.with_entries(SourceEntry(...))`.
+- An accepted work is written to `<out_dir>/<work id>/work.yaml` with its evidence and the class of every source.
+
+Authored fixtures for all four formats, and the `work.yaml` the gate writes for each, are in
+`src/common_studio/ingest/fixtures/`; `python -m common_studio.ingest.fixture_evidence` regenerates the `work.yaml`
+files.
