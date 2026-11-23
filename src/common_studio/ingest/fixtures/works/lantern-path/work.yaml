@@ -1,0 +1,55 @@
+# work.yaml: written by the Common Studio ingest gate. Do not edit by hand; re-run the gate.
+# The evidence records follow policy/sourcing-and-asset-licence-policy.md, section 3.
+schema: "common-studio/work/1"
+work: "lantern-path"
+title: "Lantern Path"
+ingest:
+  format: "lilypond"
+  sha256: "2b2afed64f6f5a893cecbf28090a5a4ff98505379d25b728688b4ea1082ab34d"
+  origin: "authored: written for the Common Studio repository as a test fixture"
+  arrangement: "lantern-path--source"
+  parts:
+    - "upper"
+    - "lower"
+  meter: "6/8"
+gate:
+  status: "passed"
+  confirmed_by: null
+  sources:
+    - record: "origin"
+      source: "authored: written for the Common Studio repository as a test fixture"
+      class: "allowed"
+      kind: "written-for-the-project"
+      reason: "written for Common Studio by a named author who dedicated it under CC0-1.0 or the Unlicense"
+    - record: "composition"
+      source: "authored: Common Studio fixture lantern-path.ly"
+      class: "allowed"
+      kind: "written-for-the-project"
+      reason: "written for Common Studio by a named author who dedicated it under CC0-1.0 or the Unlicense"
+    - record: "edition"
+      source: "authored: src/common_studio/ingest/fixtures/lantern-path.ly"
+      class: "allowed"
+      kind: "written-for-the-project"
+      reason: "written for Common Studio by a named author who dedicated it under CC0-1.0 or the Unlicense"
+    - record: "lyrics"
+      source: "authored: src/common_studio/ingest/fixtures/lantern-path.ly"
+      class: "allowed"
+      kind: "written-for-the-project"
+      reason: "written for Common Studio by a named author who dedicated it under CC0-1.0 or the Unlicense"
+evidence:
+  composition:
+    source: "authored: Common Studio fixture lantern-path.ly"
+    basis: "An original melody written in 2026 for Common Studio as a test fixture, with no earlier tune as a model, and dedicated to the public domain worldwide under the Unlicense with the rest of the repository. No other author."
+    checked_at: "2026-11-23"
+    checker: "jdev1977"
+  edition:
+    source: "authored: src/common_studio/ingest/fixtures/lantern-path.ly"
+    basis: "The fixture file is the first and only text of the melody, written by the project in this format. No edition, score library or other file was consulted. Released under the Unlicense."
+    checked_at: "2026-11-23"
+    checker: "jdev1977"
+  lyrics:
+    value: "none"
+    source: "authored: src/common_studio/ingest/fixtures/lantern-path.ly"
+    basis: "Instrumental fixture: the file carries no lyric events, lyric elements or lyric lines."
+    checked_at: "2026-11-23"
+    checker: "jdev1977"

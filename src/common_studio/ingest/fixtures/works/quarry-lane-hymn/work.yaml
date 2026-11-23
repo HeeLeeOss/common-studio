@@ -1,0 +1,54 @@
+# work.yaml: written by the Common Studio ingest gate. Do not edit by hand; re-run the gate.
+# The evidence records follow policy/sourcing-and-asset-licence-policy.md, section 3.
+schema: "common-studio/work/1"
+work: "quarry-lane-hymn"
+title: "Quarry Lane Hymn"
+ingest:
+  format: "musicxml"
+  sha256: "733010c36299fbeabe9fbc48a263f86f7962f929f90e8634e462af97bbce34d0"
+  origin: "authored: written for the Common Studio repository as a test fixture"
+  arrangement: "quarry-lane-hymn--source"
+  parts:
+    - "Flute"
+  meter: "4/4"
+gate:
+  status: "passed"
+  confirmed_by: null
+  sources:
+    - record: "origin"
+      source: "authored: written for the Common Studio repository as a test fixture"
+      class: "allowed"
+      kind: "written-for-the-project"
+      reason: "written for Common Studio by a named author who dedicated it under CC0-1.0 or the Unlicense"
+    - record: "composition"
+      source: "authored: Common Studio fixture quarry-lane-hymn.musicxml"
+      class: "allowed"
+      kind: "written-for-the-project"
+      reason: "written for Common Studio by a named author who dedicated it under CC0-1.0 or the Unlicense"
+    - record: "edition"
+      source: "authored: src/common_studio/ingest/fixtures/quarry-lane-hymn.musicxml"
+      class: "allowed"
+      kind: "written-for-the-project"
+      reason: "written for Common Studio by a named author who dedicated it under CC0-1.0 or the Unlicense"
+    - record: "lyrics"
+      source: "authored: src/common_studio/ingest/fixtures/quarry-lane-hymn.musicxml"
+      class: "allowed"
+      kind: "written-for-the-project"
+      reason: "written for Common Studio by a named author who dedicated it under CC0-1.0 or the Unlicense"
+evidence:
+  composition:
+    source: "authored: Common Studio fixture quarry-lane-hymn.musicxml"
+    basis: "An original melody written in 2026 for Common Studio as a test fixture, with no earlier tune as a model, and dedicated to the public domain worldwide under the Unlicense with the rest of the repository. No other author."
+    checked_at: "2026-11-23"
+    checker: "jdev1977"
+  edition:
+    source: "authored: src/common_studio/ingest/fixtures/quarry-lane-hymn.musicxml"
+    basis: "The fixture file is the first and only text of the melody, written by the project in this format. No edition, score library or other file was consulted. Released under the Unlicense."
+    checked_at: "2026-11-23"
+    checker: "jdev1977"
+  lyrics:
+    value: "none"
+    source: "authored: src/common_studio/ingest/fixtures/quarry-lane-hymn.musicxml"
+    basis: "Instrumental fixture: the file carries no lyric events, lyric elements or lyric lines."
+    checked_at: "2026-11-23"
+    checker: "jdev1977"
