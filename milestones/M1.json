@@ -1,0 +1,45 @@
+{
+  "v": 1,
+  "project": "common-studio",
+  "milestone": "M1",
+  "state": "covered",
+  "reads": [
+    {
+      "read": 1,
+      "runId": "3779e53d43686963",
+      "at": "2026-11-23T00:00:05.715Z",
+      "sha256": "752eed19e237dac0c06686b92a687b416dd2024b0ac17518b93ac18adacd53ce",
+      "prs": [
+        {
+          "number": 1,
+          "bodyOnly": false,
+          "cut": false
+        },
+        {
+          "number": 3,
+          "bodyOnly": false,
+          "cut": false
+        },
+        {
+          "number": 4,
+          "bodyOnly": false,
+          "cut": false
+        },
+        {
+          "number": 6,
+          "bodyOnly": false,
+          "cut": false
+        }
+      ],
+      "covered": [
+        "AC-01",
+        "AC-02",
+        "AC-09",
+        "AC-10",
+        "AC-11"
+      ],
+      "uncovered": [],
+      "unverified": []
+    }
+  ]
+}
