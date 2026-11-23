@@ -130,6 +130,44 @@ class Work:
 
 
 @dataclass(frozen=True)
+class Waiver:
+    """A recorded decision to go ahead despite a blocking finding of one check.
+
+    ``reason`` is a written reason and is required. ``bars`` limits the waiver to those bars; empty means every bar
+    of the check. A waiver is score metadata: it is kept with the arrangement but is not part of the score hash.
+    """
+
+    check: str
+    reason: str
+    bars: tuple[int, ...] = ()
+    by: Optional[str] = None
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.check, str) or not self.check.strip():
+            raise ValueError("a waiver names the check it waives")
+        if not isinstance(self.reason, str) or len(self.reason.strip()) < 10:
+            raise ValueError("a waiver needs a written reason of at least 10 characters")
+        object.__setattr__(self, "reason", self.reason.strip())
+        bars = tuple(self.bars)
+        if any(isinstance(b, bool) or not isinstance(b, int) or b < 1 for b in bars):
+            raise ValueError("waiver bars are whole bar numbers from 1")
+        object.__setattr__(self, "bars", tuple(sorted(set(bars))))
+
+    def covers(self, check: str, bar: int) -> bool:
+        return self.check == check and (not self.bars or bar in self.bars)
+
+    def to_dict(self) -> dict:
+        return {"check": self.check, "reason": self.reason, "bars": list(self.bars), "by": self.by}
+
+    @classmethod
+    def from_dict(cls, d: dict) -> "Waiver":
+        """Rebuild a waiver from its record; the constructor re-validates the reason and bars."""
+        if not isinstance(d, dict):
+            raise ValueError("a waiver record is an object")
+        return cls(d.get("check"), d.get("reason"), tuple(d.get("bars") or ()), d.get("by"))
+
+
+@dataclass(frozen=True)
 class Arrangement:
     """One arrangement of a work in a style, identified as ``work--style``."""
 
@@ -137,9 +175,11 @@ class Arrangement:
     style: str
     parts: tuple[Part, ...] = ()
     grid: BeatGrid = field(default_factory=BeatGrid)
+    waivers: tuple[Waiver, ...] = ()
 
     def __post_init__(self) -> None:
         object.__setattr__(self, "parts", tuple(self.parts))
+        object.__setattr__(self, "waivers", tuple(self.waivers))
         # arrangement_id checks both names against the grammar.
         arrangement_id(self.work, self.style)
         names = [p.name for p in self.parts]
