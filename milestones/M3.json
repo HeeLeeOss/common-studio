@@ -1,0 +1,27 @@
+{
+  "v": 1,
+  "project": "common-studio",
+  "milestone": "M3",
+  "state": "covered",
+  "reads": [
+    {
+      "read": 1,
+      "runId": "cbc858fb13cd7833",
+      "at": "2026-11-23T01:47:20.337Z",
+      "sha256": "752eed19e237dac0c06686b92a687b416dd2024b0ac17518b93ac18adacd53ce",
+      "prs": [
+        {
+          "number": 2,
+          "bodyOnly": false,
+          "cut": false
+        }
+      ],
+      "covered": [
+        "AC-07",
+        "AC-08"
+      ],
+      "uncovered": [],
+      "unverified": []
+    }
+  ]
+}
