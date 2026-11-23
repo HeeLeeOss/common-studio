@@ -21,3 +21,20 @@ This file is written by the Hee-Lee Oss host each time a milestone of this proje
 - Licence: Unlicense; notices: `NOTICE.md` (sha256 `2f98beeb187a131376b49344820ecd0a7321086acd7922a8dc7d2176b3f44f9d`)
 - Delivery: deployment-url
 - This work was AI-assisted.
+
+## M3: `Pre-render checkers and waivers`
+
+- Shipped commit: `b176064abbfc11d2c60e16925c9f08b129f45557`
+- Recipe: github-release
+- Published at: `https://github.com/HeeLeeOss/common-studio/releases/tag/shipped-m3`
+- Identifier: `shipped-m3`, seen to resolve when its bytes were fetched back from `https://github.com/HeeLeeOss/common-studio/releases/download/shipped-m3/common-studio-m3.tar` at 2026-11-23T03:26:43.032Z
+- Plan digest: `439cd03f2d231f0691a36e75b4f748d0c89f5425c4f2017eafd93b646960db71`
+- Files: 10; archive sha256 `3ee47d63007093262e6f583129961775844997bfec8d7559502400fe3c5670a5`
+- Re-verification: none (bytes match), `evaluations/M3.shipped.json` (sha256 `45ed6957e5685be95fdd132a0b691fd8d9ff1c7e79f0a3582bea1200db7003cb`)
+- Milestone record: covered, `milestones/M3.json` (sha256 `4b98a3696a66dbe9d70dd8b25f18f54b805685b3ef7b2bf0fa3c845a4cad9651`)
+- Task `common-studio-check-005`: evaluation at the commit none; receipt run `0ebc5ad7ac01b541` (sha256 `3cc2e32ea2a964f881d77d887a180d1d4736887f0b33907c78e7779b5191280e`)
+- Changed since the coverage read, accepted by a person: none
+- Approved by `jdev1977` at 2026-11-23T03:26:36.177Z, typing the plan digest
+- Licence: Unlicense; notices: `NOTICE.md` (sha256 `e2a06575a82b4fab328255f6f3a0fbf6665b97566e3dea7ad828003d6b37df9a`)
+- Delivery: deployment-url
+- This work was AI-assisted.
